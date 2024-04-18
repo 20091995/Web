@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard</title>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link rel="stylesheet" href="styles2.css">
+    </head>
+
+    <body>
+        <div class="grid-container">
+            <header class="header">
+                <div class="menu-icon" onclick="openSidebar()">
+                    <span class="material-icons-outlined">menu</span>
+                </div>
+                <div class="header-left">
+                    <span class="material-icons-outlined">search</span>
+                </div>
+                <div class="header-right">
+                    <span class="material-icons-outlined">notifications</span>
+                    <span class="material-icons-outlined">email</span>
+                    <span class="material-icons-outlined">account_circle</span>
+                </div>
+            </header>
+
+            <aside id="sidebar">
+                <div class="logo">
+                    <a href="https://creatym-france.com/"><img src="images/Creatym.jpg" alt=""> 
+                    </a>
+                </div> 
+                <div class="sidebar-title">
+                    <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+                </div>
+
+                <ul class="sidebar-list">
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">add_card</span> 
+                            <div class="onglet" onclick="afficherContenu('page1')">CHIFFRE D'AFFAIRE</div>
+                        </li>
+
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">production_quantity_limits</span> 
+                            <div class="onglet" onclick="afficherContenu('page2')"> BILAN DES ACTIFS </div>
+                        </li>
+
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">credit_score</span> 
+                            <div class="onglet" onclick="afficherContenu('page3')"> BILAN DES PASSIFS </div>
+                        </li>
+
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">group_add</span> 
+                            <div class="onglet" onclick="afficherContenu('page4')"> COLLABORATEURS </div>
+                        </li>
+
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">poll</span> 
+                            <div class="onglet" onclick="afficherContenu('page5')"> Reports </div>
+                        </li>
+
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">settings</span> 
+                            <div class="onglet" onclick="afficherContenu('page6')"> Settings </div>
+                        </li>
+                </ul>
+            </aside>
+        <!-- debut de la classe de main -->
+            <main class="main-container">
+                <!-- class des données -->
+                <div class="main-cards">
+                    <div class="card">
+                        <div class="card-inner">
+                            <h3> CHIFFRE D'AFFAIRE EN 2022</h3>
+                            <span class="material-icons-outlined">add_card</span>
+                        </div>
+                        <h1 class="chiffre blink2"> 3,982 M€</h1>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-inner">
+                            <h3>VALEUR AJOUTEE EN 2022</h3>
+                            <span class="material-icons-outlined">add_business</span>
+                        </div>
+                        <h1 class="chiffre blink2"> 2,459 M€ </h1>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-inner">
+                            <h3>RESULTAT COURANTS AVANT IMPOTS (RCAI)</h3>
+                            <span class="material-icons-outlined">checkbook</span>
+                        </div>
+                        <h1 class="chiffre blink2"> 553 400 € </h1>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-inner">
+                            <h3>ALERTS</h3>
+                            <span class="material-icons-outlined">inventory_2</span>
+                        </div>
+                        <h1 class="chiffre blink2"> 5600</h1>
+                    </div>
+                </div>
+
+                <div class="contenu" id="page1"> 
+                    <div class="main-title"> 
+                        <h3 class="titre"> <p class="blink"> Nos comptes de résultats</p>
+                        </h3>
+                    </div>
+
+                    <div class="charts">
+                        <div class="charts-card1">
+                            <div class="view_port">
+                                <div class="polling_message"> Evolution annuelle du chiffre d'affaire et  de la valeur ajoutée </div>
+                                
+                                <div class="cylon_eye"></div>
+                            </div>
+                            <div id="bar-chart"></div>
+                        </div>
+
+                        <div class="charts-card1">
+                            <div class="view_port">
+                                <div class="polling_message"> Résultat courant avant impôt et Résultat net</div>
+                                <div class="cylon_eye"></div>
+                            </div>
+                            <div id="area-chart"></div>
+                        </div>
+
+                    </div>
+                </div>
+                    <!--ACTIF-->
+                
+                <div class="contenu" id="page2"> 
+                    <div class="main-title"> <h3 class="titre"> <p class="blink"> Bilan de nos actifs </p></h3>
+                    </div>
+            
+                    <div class="charts">
+                        <div class="charts-card1">
+                            <div class="view_port">
+                                <div class="polling_message">  Bilan annuel total des actifs </div>
+                                <div class="cylon_eye"></div>
+                            </div>
+                            <!--<div id="bar-chart3"></div>-->
+                            <div class="filter-container">
+                                <label for="filter">Filtrer par:</label>
+                                <select id="filter">
+                                    <option value="all">Tout</option>
+                                    <option value="category1">2016</option>
+                                    <option value="category2">2017</option>
+                                    <option value="category3">2018</option>
+                                    <option value="category4">2019</option>
+                                    <option value="category5">2020</option>
+                                    <option value="category5">2021</option>
+                                    <option value="category5">2022</option>
+                                    <!-- Ajoutez d'autres options selon vos besoins -->
+                                </select>
+                            </div>
+                        
+                            <table id="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="filter-container"> ANNEE </th>
+                                        <th>TOTAL DES ACTIFS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="charts-card1">
+                            <div class="view_port">
+                                <div class="polling_message"> Le détail annuel de tous les actifs </div>
+                                <div class="cylon_eye"></div>
+                            </div>
+                            <div id="bar-chart1"></div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="contenu" id="page3"> 
+                    <div class="main-title"> <h3 class="titre"> <p class="blink"> Bilan de nos passifs </p></h3>
+                    </div>
+
+                    <div class="charts">
+                        <div class="charts-card1">
+                            <div class="view_port">
+                                <div class="polling_message"> Bilan total annuel des actifs </div>
+                                
+                                <div class="cylon_eye"></div>
+                            </div>
+                            <div id="bar-chart4"></div>
+                        </div>
+
+                        <div class="charts-card1">
+                            <div class="view_port">
+                                <div class="polling_message"> Le détail annuel des capitaux propores, des dettes et des passifs</div>
+                                <div class="cylon_eye"></div>
+                            </div>
+                            <div id="area-chart4"></div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="contenu" id="page4"> 
+                    <div class="main-title"> <h3 class="titre"> <p class="blink"> Nos collaborateurs </p></h3>
+                    </div>
+                    <dir class="board">
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <td>Nom</td>
+                                    <td>Profil</td>
+                                    <td>Status</td>
+                                    <td>Client</td>
+                                    <td>Date d'entrée</td>
+                                    <td>Date de sortie</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="people">
+                                        <img src="images/amadou.png" alt="">
+                                        <div class="people-de">
+                                            <h4> Amadou Balde</h4>
+                                            <p> <a href="amadoubalde47@gmail.com" title="amadoubalde47@gmail.com">amadoubalde47@gmail.com</a> </p
+                                        </div>
+                                    </td> 
+                                    <td class="people-des">
+                                        <h4>Ingénieur</h4>
+                                        <p>Data analyst</p>
+                                    </td>
+                                    <td class="interne">
+                                        <p>R&D</p>
+                                    </td>
+                                    <td class="role">
+                                        <p>Safran</p>
+                                    </td>
+                                    <td class="interne">
+                                        <p>01/01/2022</p>
+                                    </td>
+                                    <td class="interne">
+                                        <p>---</p>
+                                    </td>
+
+                                    <td class="edit">
+                                        <a href="https://www.linkedin.com/feed/">Edit</a>
+                                    </td>
+                            </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td class="people">
+                                        <img src="images/lo.jpg" alt="">
+                                        <div class="people-de">
+                                            <h4> Balla Lo</h4>
+                                            <p>ballalo01@gmail.com</p>
+                                        </div>
+                                    </td> 
+                                    <td class="people-des">
+                                        <h4>Ingénieur</h4>
+                                        <p>Dessinateur Projeteur</p>
+                                    </td>
+                                    <td class="active0">
+                                        <p>Parti</p>
+                                    </td>
+                                    <td class="role">
+                                        <p>SFR</p>
+                                    </td>
+                                    <td class="active0">
+                                        <p>01/01/2022</p>
+                                    </td>
+                                    <td class="active0">
+                                        <p>01/11/2023</p>
+                                    </td>
+
+                                    <td class="edit">
+                                        <a href="https://www.linkedin.com/feed/">Edit</a>
+                                    </td>
+                            </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td class="people">
+                                        <img src="images/bilal.jpg" alt="">
+                                        <div class="people-de">
+                                            <h4> Bilal Creatym</h4>
+                                            <p>bilal@gmail.com</p>
+                                        </div>
+                                    </td> 
+                                    <td class="people-des">
+                                        <h4>Ingénieur</h4>
+                                        <p>Dessinateur Projeteur</p>
+                                    </td>
+                                    <td class="active">
+                                        <p>Active</p>
+                                    </td>
+                                    <td class="role">
+                                        <p>Orange</p>
+                                    </td>
+                                    <td class="active">
+                                        <p>01/01/2022</p>
+                                    </td>
+                                    <td class="active">
+                                        <p>---</p>
+                                    </td>
+
+                                    <td class="edit">
+                                        <a href="https://www.linkedin.com/feed/">Edit</a>
+                                    </td>
+                            </tr>
+                            </tbody>
+
+                            <tbody>
+                                <tr>
+                                    <td class="people">
+                                        <img src="images/l.jpg" alt="">
+                                        <div class="people-de">
+                                            <h4> Leonel Koho</h4>
+                                            <p>Leonel@gmail.com</p>
+                                        </div>
+                                    </td> 
+                                    <td class="people-des">
+                                        <h4>Consultant</h4>
+                                        <p>Méthode industrie</p>
+                                    </td>
+                                    <td class="active">
+                                        <p>Active</p>
+                                    </td>
+                                    <td class="role">
+                                        <p>ITR</p>
+                                    </td>
+                                    <td class="active">
+                                        <p>01/01/2022</p>
+                                    </td>
+                                    <td class="active">
+                                        <p>---</p>
+                                    </td>
+
+                                    <td class="edit">
+                                        <a href="https://www.linkedin.com/in/leonel-koho-42b510196/">Edit</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </dir>
+                </div>
+            </main>
+        <!-- CODE JS-->
+        </div>
+        <!--CODE DE TEST-->
+
+        <!--PARTIE SCRIPTS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.44.0/apexcharts.min.js"></script>
+        <script src="scripts2.js"></script>
+    </body>
+</html>
